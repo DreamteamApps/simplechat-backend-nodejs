@@ -1,0 +1,22 @@
+[
+  {
+    "user_id": 1,
+    "room_id": 1,
+    "type": "text",
+    "message": "Teste mensagem 01"
+  },
+  {
+    "user_id": 2,
+    "room_id": 1,
+    "type": "image",
+    "message": "Legenda da imagem",
+    "file_id": 1
+  },
+  {
+    "user_id": 3,
+    "room_id": 1,
+    "type": "audio",
+    "message": "",
+    "file_id": 2
+  }
+]

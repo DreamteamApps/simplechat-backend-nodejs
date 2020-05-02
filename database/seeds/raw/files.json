@@ -1,0 +1,16 @@
+[
+  {
+    "type": "image",
+    "name": "imagem01",
+    "extension": "jpg",
+    "mimeType": "image/jpeg",
+    "path": "files/image/image01.jpg"
+  },
+  {
+    "type": "audio",
+    "name": "audio01",
+    "extension": "mp3",
+    "mimeType": "audio/mpeg",
+    "path": "files/audio/audio01.mp3"
+  }
+]
