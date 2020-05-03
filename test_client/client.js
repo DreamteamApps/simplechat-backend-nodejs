@@ -3,7 +3,7 @@ var ui = new inquirer.ui.BottomBar();
 
 var socket = require("socket.io-client");
 
-var baseUrl = "http://127.0.0.1:3334";
+var baseUrl = "https://dta-simplechat-backend.herokuapp.com";
 var socketClient;
 var user;
 var room;
