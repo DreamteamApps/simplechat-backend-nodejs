@@ -30,7 +30,7 @@ module.exports.join = async (roomConnection, roomCode, username) => {
 
     let user = await User.findBy('username', username);
     if (!user) {
-        await User.create({
+        user = await User.create({
             username: username,
             room_id: room.id,
             socket_id: roomConnection.socketId
@@ -40,7 +40,7 @@ module.exports.join = async (roomConnection, roomCode, username) => {
             room_id: room.id,
             socket_id: roomConnection.socketId
         });
-        user = user.save();
+        await user.save();
     }
 
     room.save();

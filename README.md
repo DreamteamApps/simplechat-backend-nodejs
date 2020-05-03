@@ -1,8 +1,11 @@
 # Online at
- ### API - https://dta-simplechat-backend.herokuapp.com/
+### API - https://dta-simplechat-backend.herokuapp.com/
+
+# Database
+### SQLite - To use SQLITE change DB_CONNECTION in .env to sqlite
+### MySql - To use MySql change DB_CONNECTION in .env to mysql
 
 # Socket events
-
 ### (client) join-room
 ```json
 {
