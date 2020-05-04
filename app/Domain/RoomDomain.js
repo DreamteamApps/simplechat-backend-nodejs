@@ -9,7 +9,6 @@ const MessageDomain = use('App/Domain/MessageDomain')
  * DTO
  * 
 */
-const DTOMessage = use('App/DTO/DTOMessage')
 
 /**
  * Models

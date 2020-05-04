@@ -3,7 +3,7 @@
  * 
 */
 const Server = use('Server')
-const socketClient = use('socket.io')(Server.getInstance(), { pingInterval: 5000, pingTimeout: 10000 });
+const socketClient = use('socket.io')(Server.getInstance());
 
 /**
  * Domains

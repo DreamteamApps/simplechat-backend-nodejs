@@ -18,7 +18,7 @@ const Message = use("App/Models/Message")
 */
 module.exports.create = async (user_id, room_id, message, type, file_id) => {
 
-    const messageModel = await Message.create({
+    const createdMessage = await Message.create({
         user_id,
         room_id,
         message,
@@ -26,7 +26,7 @@ module.exports.create = async (user_id, room_id, message, type, file_id) => {
         file_id
     });
 
-    return new DTOMessage(messageModel);
+    return await module.exports.getById(createdMessage.id);
 }
 
 /**
@@ -37,7 +37,19 @@ module.exports.create = async (user_id, room_id, message, type, file_id) => {
 */
 module.exports.getRoomLastMessages = async (roomId, quantity) => {
     
-    const messagesModel = await Message.query().where('room_id', roomId).orderBy('created_at', 'desc').with('user').with('file').limit(quantity).fetch();
+    const messagesModel = await Message.query().with('user').with('file').where('room_id', roomId).orderBy('created_at', 'desc').limit(quantity).fetch();
 
     return messagesModel.toJSON().map(message => new DTOMessage(message));
+}
+
+/**
+ * Get message by id
+ *
+ * @param {string} messageId
+*/
+module.exports.getById = async (messageId) => {
+
+    const messageModel = await Message.query().with('user').with('file').where('id', messageId).first();
+
+    return new DTOMessage(messageModel.toJSON());
 }
