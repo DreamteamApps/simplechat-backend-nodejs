@@ -3,7 +3,7 @@ var ui = new inquirer.ui.BottomBar();
 
 var socket = require("socket.io-client");
 
-var baseUrl = "https://dta-simplechat-backend.herokuapp.com";
+var baseUrl = "http://127.0.0.1:3334";
 var socketClient;
 var user;
 var room;
@@ -67,7 +67,7 @@ const nameScreen = () => {
 
     socketClient = socket(baseUrl);
     socketClient.emit("join-room", {
-      username: response.answer
+      userId: 2
     });
 
     socketClient.on('user-joined', (data) => {

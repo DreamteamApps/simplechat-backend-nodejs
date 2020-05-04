@@ -12,9 +12,10 @@ module.exports.createRoom = async (socketClient, connection) => {
     let room = {
         id: () => _roomId,
         socketId: connection.id,
-        join: (roomId) => {
+        setRoomId : (roomId) => {
             _roomId = roomId;
-            
+        },
+        join: () => {
             connection.join(_roomId);
 
             Log.devLog(`New client connected ${connection.id}`);
@@ -30,7 +31,13 @@ module.exports.createRoom = async (socketClient, connection) => {
 
             socketClient.emit(eventName, data);
 
-            Log.Log.devLog(`Emited ${eventName} to all`, data ? JSON.stringify(data, null, 2) : '');
+            Log.devLog(`Emited ${eventName} to all`, data ? JSON.stringify(data, null, 2) : '');
+        },
+        emitToSelf: (eventName, data) => {
+
+            connection.emit(eventName, data);
+
+            Log.devLog(`Emited ${eventName} to self`, data ? JSON.stringify(data, null, 2) : '');
         },
         on: (eventName, callback) => {
             connection.on(eventName, (data) => {

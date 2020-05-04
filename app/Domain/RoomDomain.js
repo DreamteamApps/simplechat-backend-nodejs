@@ -38,20 +38,25 @@ module.exports.join = async (roomConnection, roomCode, userId) => {
 
     room.save();
 
-    roomConnection.join(room.id);
-
     const user = await UserDomain.update(userId, {
-        room_id: roomConnection.id(),
+        room_id: room.id,
         socket_id: roomConnection.socketId
     });
 
-    const lastMessages = await MessageDomain.getRoomLastMessages(roomConnection.id(), 10);
+    const lastMessages = await MessageDomain.getRoomLastMessages(room.id, 10);
 
-    roomConnection.emit(SocketEvents.SERVER_USER_JOINED_ROOM, {
-        id: user.id,
-        username: user.username,
+    roomConnection.emitToSelf(SocketEvents.SERVER_USER_JOINED_ROOM, {
+        user,
         lastMessages
     });
+    
+    roomConnection.setRoomId(room.id);
+    
+    roomConnection.emit(SocketEvents.SERVER_USER_JOINED_ROOM, {
+        user
+    });
+
+    roomConnection.join(room.id);
 }
 
 /**
