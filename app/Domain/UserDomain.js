@@ -1,6 +1,45 @@
+
+/**
+ * DTO
+ * 
+*/
+const DTOUser = use('App/DTO/DTOUser');
+
+/**
+ * Models
+ * 
+*/
 const User = use("App/Models/User")
 
-const GitHub = use("App/Infrastructure/Github")
+/**
+ * Gets or creates user
+ *
+ * @param {string} username
+*/
+module.exports.getOrCreateUser = async (username) => {
+    const userModel = await User.findOrCreate(
+        { username: username },
+        { username: username }
+    )
+
+    return new DTOUser(userModel);
+}
+
+/**
+ * Updates user
+ *
+ * @param {integer} userId
+ * @param {object} fields
+*/
+module.exports.update = async (userId, fields) => {
+    const userModel = await User.findBy('id', userId);
+
+    userModel.merge(fields);
+
+    userModel.save();
+
+    return new DTOUser(userModel);
+}
 
 /**
  * Get user by id
@@ -8,24 +47,9 @@ const GitHub = use("App/Infrastructure/Github")
  * @param {string} userId
 */
 module.exports.getUserById = async (userId) => {
-    const user = await User.findBy('id', userId);
-    return user;
-}
+    const userModel = await User.findBy('id', userId);
 
-/**
- * Sets the socketId of userId
- *
- * @param {integer} userId
- * @param {string} socketId
-*/
-module.exports.setUserSocketId = async (userId, socketId) => {
-    const user = await User.findBy('id', userId);
-
-    user.merge({
-        socket_id: socketId
-    });
-
-    user.save();
+    return userModel ? new DTOUser(userModel) : null;
 }
 
 /**
@@ -34,6 +58,7 @@ module.exports.setUserSocketId = async (userId, socketId) => {
  * @param {string} socketId
 */
 module.exports.getUserBySocketId = async (socketId) => {
-    const user = await User.findBy('socket_id', socketId);
-    return user;
+    const userModel = await User.findBy('socket_id', socketId);
+
+    return userModel ? new DTOUser(userModel) : null;
 }

@@ -8,7 +8,7 @@
     "start": "node server.js",
     "test": "node ace test",
     "dev": "adonis serve --dev --debug",
-    "dev:setup": "adonis migration:run && adonis seed"
+    "setup": "adonis migration:run && adonis seed"
   },
   "keywords": [
     "adonisjs",
@@ -28,6 +28,7 @@
     "@adonisjs/lucid": "^6.1.3",
     "@adonisjs/websocket": "^1.0.12",
     "axios": "^0.19.2",
+    "moment": "^2.25.1",
     "mysql": "^2.18.1",
     "socket.io": "^2.3.0",
     "sqlite3": "^4.2.0"

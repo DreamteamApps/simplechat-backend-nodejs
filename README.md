@@ -5,6 +5,23 @@
 ### SQLite - To use SQLITE change DB_CONNECTION in .env to sqlite
 ### MySql - To use MySql change DB_CONNECTION in .env to mysql
 
+# Http methods
+### Create user 
+#### Request - POST - /user/create
+```json
+{
+	"username" : "Erick"
+}
+```
+
+#### Response
+```json
+{
+	"id": 1,
+	"username" : "Erick"
+}
+```
+
 # Socket events
 ### (client) join-room
 ```json
