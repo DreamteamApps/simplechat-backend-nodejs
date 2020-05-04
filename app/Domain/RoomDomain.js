@@ -108,7 +108,7 @@ module.exports.sendMessage = async (roomConnection, message, type, fileId) => {
 
     const { id } = user;
 
-    const dtoMessage = MessageDomain.create(id, roomConnection.id(), message, type, fileId);
+    const dtoMessage = await MessageDomain.create(id, roomConnection.id(), message, type, fileId);
 
     roomConnection.emit(SocketEvents.SERVER_USER_SEND_MESSAGE, dtoMessage);
 }

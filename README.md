@@ -58,6 +58,7 @@
 		{
 			"type": "text",
 			"message": "opa",
+			"date":"2020-05-04 12:42",
 			"user": {
 				"id": 1,
 				"username": "Ricardo"
@@ -66,6 +67,7 @@
 		{
 			"type": "text",
 			"message": "noiz",
+			"date":"2020-05-04 12:40",
 			"user": {
 				"id": 2,
 				"username": "Daniel"
@@ -96,6 +98,7 @@
 {
 	"type": "text",
 	"message": "noiz",
+	"date":"2020-05-04 12:48",
 	"user": {
 		"id": 2,
 		"username": "Daniel"
