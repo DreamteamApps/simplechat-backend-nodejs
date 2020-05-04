@@ -1,9 +1,16 @@
 # Online at
 ### API - https://dta-simplechat-backend.herokuapp.com/
 
+# To run
+#### 1 - create .env file or set your environment variables as in the .env.example
+#### 2 - npm run setup (to run migrations and seeds)
+
+# To debug
+#### 1 - npm run dev (to run migrations and seeds)
+
 # Database
-### SQLite - To use SQLITE change DB_CONNECTION in .env to sqlite
-### MySql - To use MySql change DB_CONNECTION in .env to mysql
+#### SQLite - To use SQLITE change DB_CONNECTION in .env or environment variables to sqlite
+#### MySql - To use MySql change DB_CONNECTION in .env or environment variables to mysql
 
 # Http methods
 ### Create user 
@@ -26,7 +33,7 @@
 ### (client) join-room
 ```json
 {
-	"username" : "Erick"
+	"userId" : 1
 }
 ```
 
