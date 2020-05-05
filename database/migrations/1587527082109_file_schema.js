@@ -12,6 +12,8 @@ class FilesSchema extends Schema {
       table.string('extension', 254)
       table.string('mimeType', 254)
       table.string('path', 1000)
+      table.string('url', 1000)
+      table.integer('byte_size')
       table.string('duration', 20)
       table.timestamps()
     })
