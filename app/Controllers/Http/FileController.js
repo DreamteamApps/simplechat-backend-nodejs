@@ -17,20 +17,21 @@ class FileController {
     async upload({ request }) {
         const { type, duration_seconds } = request.all();
 
-        const basePath = `${Helpers.tmpPath('uploads')}\\${type}`;
+        return new Promise(async (resolve) => {
+            try {
+                request.multipart.file('file', {}, async (file) => {
+                    const fileName = file.clientName.split('.')[0];
 
-        const file = request.file('file', {
-            size: '5mb',
-            extnames: ['jpg', 'jpeg', 'png', 'mp3', 'wav']
+                    const createdFile = await FileDomain.create(file.stream, type, fileName, file.extname, duration_seconds);
+
+                    resolve(createdFile);
+                })
+
+                request.multipart.process();
+            } catch (error) {
+                reject(error)
+            }
         });
-
-        const newFilename = `${Date.now()}.${file.extname}`;
-        await file.move(basePath, {
-            name: newFilename,
-            overwrite: true
-        });
-
-        return await FileDomain.create(type, file.clientName.split('.')[0], file.extname, `${basePath}\\${newFilename}`, duration_seconds);
     }
 
     /**
@@ -38,12 +39,16 @@ class FileController {
      *
      * @param {string} request.file
     */
-   async getFileStream({ params, response }) {
-    const {fileId} = params;
-    const file = await FileDomain.getFileToDownloadById(fileId);
+    async getFileStream({ params, response }) {
+        response.implicitEnd = false
 
-    response.attachment(file.path, file.name);
-   }
+        const { fileId } = params;
+
+        const fileStream = await FileDomain.getFileStream(fileId);
+
+        fileStream.pipe(response.response);
+
+    }
 }
 
 module.exports = FileController
