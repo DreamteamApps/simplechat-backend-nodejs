@@ -19,3 +19,8 @@ const Route = use('Route');
 Route.group(() => {
     Route.post('create', 'UserController.create');
 }).prefix('user');
+
+Route.group(() => {
+    Route.post('upload', 'FileController.upload');
+    Route.get('content/:fileId', 'FileController.getFileStream');
+}).prefix('file');

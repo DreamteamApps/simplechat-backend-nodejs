@@ -49,9 +49,9 @@ module.exports.join = async (roomConnection, roomCode, userId) => {
         user,
         lastMessages
     });
-    
+
     roomConnection.setRoomId(room.id);
-    
+
     roomConnection.emit(SocketEvents.SERVER_USER_JOINED_ROOM, {
         user
     });
@@ -70,16 +70,13 @@ module.exports.disconnectUser = async (roomConnection) => {
     let user = await UserDomain.getUserBySocketId(roomConnection.socketId);
     if (!user) return;
 
-    const { id, username } = user;
-
     await UserDomain.update(user.id, {
         room_id: null,
         socket_id: null
     });
 
     roomConnection.emit(SocketEvents.SERVER_USER_LEAVED_ROOM, {
-        id,
-        username
+        user
     }, roomConnection.id);
 }
 
@@ -92,11 +89,8 @@ module.exports.userWritingMessage = async (roomConnection) => {
     let user = await UserDomain.getUserBySocketId(roomConnection.socketId);
     if (!user) return;
 
-    const { id, username } = user;
-
     roomConnection.emit(SocketEvents.SERVER_USER_WRITING_MESSAGE, {
-        id,
-        username
+        user
     });
 }
 
