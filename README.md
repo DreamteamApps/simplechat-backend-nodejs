@@ -1,5 +1,6 @@
 # Online at
 ### API - https://dta-simplechat-backend.herokuapp.com/
+#### DOCS - https://documenter.getpostman.com/view/9069060/Szmb7L6K?version=latest
 
 # To run
 #### 1 - create .env file or set your environment variables as in the .env.example
