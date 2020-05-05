@@ -7,8 +7,9 @@ const DTOFile = use('App/DTO/DTOFile');
 
 class DTOMessage {
     constructor(messageModel) {
-        const { type, message, created_at, user, file } = messageModel;
+        const { id, type, message, created_at, user, file } = messageModel;
 
+        this.id = id;
         this.type = type;
         this.message = message;
         this.date = created_at;
