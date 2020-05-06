@@ -20,6 +20,8 @@ const Socket = use("App/Helpers/Socket")
 
 socketClient.on('connection', async (connection) => {
     const room = await Socket.createRoom(socketClient, connection);
+    
+    room.on(SocketEvents.CLIENT_CONNECT, () => RoomDomain.clientConnect(room));
 
     room.on(SocketEvents.CLIENT_JOIN_ROOM, async ({ userId }) => RoomDomain.join(room, 'sala-teste', userId));
 

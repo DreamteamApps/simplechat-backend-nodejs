@@ -31,6 +31,8 @@
 ```
 
 # Socket events
+### (client) client-connect
+
 ### (client) join-room
 ```json
 {
@@ -47,6 +49,13 @@
 {
 	"message" : "e ai",
 	"type" : "text"
+}
+```
+
+### (server) total-online
+```json
+{
+	"total": 15
 }
 ```
 

@@ -1,4 +1,5 @@
 module.exports = {
+    CLIENT_CONNECT: 'client-connect',
     CLIENT_JOIN_ROOM: 'join-room',
     CLIENT_LEAVE_ROOM: 'leave-room',
     CLIENT_WRITING_MESSAGE: 'writing-message',
@@ -8,4 +9,5 @@ module.exports = {
     SERVER_USER_LEAVED_ROOM: 'user-leaved',
     SERVER_USER_WRITING_MESSAGE: 'user-writing-message',
     SERVER_USER_SEND_MESSAGE: 'user-send-message',
+    SERVER_TOTAL_ONLINE: 'total-online'
 };

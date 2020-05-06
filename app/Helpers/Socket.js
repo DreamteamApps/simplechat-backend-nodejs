@@ -12,8 +12,11 @@ module.exports.createRoom = async (socketClient, connection) => {
     let room = {
         id: () => _roomId,
         socketId: connection.id,
-        setRoomId : (roomId) => {
+        setRoomId: (roomId) => {
             _roomId = roomId;
+        },
+        totalConnections: () => {
+            return socketClient.engine.clientsCount;
         },
         join: () => {
             connection.join(_roomId);
