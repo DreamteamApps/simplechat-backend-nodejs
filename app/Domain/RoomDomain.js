@@ -63,7 +63,9 @@ module.exports.join = async (roomConnection, roomCode, userId) => {
  * Emits recent played to all connected clients when a client connect
 */
 module.exports.clientConnect = async (room) => {
-    room.emitToAll(SocketEvents.SERVER_TOTAL_ONLINE, room.totalConnections());
+    room.emitToAll(SocketEvents.SERVER_TOTAL_ONLINE, {
+        total: room.totalConnections()
+    });
 }
 
 /**
