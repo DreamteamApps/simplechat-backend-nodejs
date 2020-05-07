@@ -44,9 +44,11 @@ class FileController {
 
         const { fileId } = params;
 
-        const fileStream = await FileDomain.getFileStream(fileId);
+        const file = await FileDomain.getFileStream(fileId);
 
-        fileStream.pipe(response.response);
+        response.header('Content-Disposition', `attachment; filename="${file.name}"`);
+
+        file.fileStream.pipe(response.response);
 
     }
 }

@@ -22,7 +22,7 @@ const AmazonS3 = use("App/Infrastructure/AmazonS3");
  * @param {string} username
 */
 module.exports.create = async (fileStream, type, name, extension, duration) => {
-    
+
     const externalUrl = process.env.EXTERNAL_URL;
     if (!externalUrl) {
         console.log('External url environment variable not present, file uploads may not work');
@@ -35,7 +35,7 @@ module.exports.create = async (fileStream, type, name, extension, duration) => {
         key: `${Date.now()}.${extension}`,
         duration_seconds: duration ? Number.parseInt(duration) : null
     });
-    
+
     await AmazonS3.uploadFile(fileStream, createdFile.key);
 
     const url = `${externalUrl}/file/content/${createdFile.id}`;
@@ -71,5 +71,8 @@ module.exports.getFileStream = async (fileId) => {
 
     const fileModel = await File.findBy('id', fileId);
 
-    return AmazonS3.downloadFile(fileModel.key);
+    return {
+        fileStream: await AmazonS3.downloadFile(fileModel.key),
+        name: `${fileModel.name}.${fileModel.extension}`
+    };
 }
