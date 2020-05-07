@@ -52,6 +52,21 @@
 }
 ```
 
+```json
+{
+	"type" : "audio",
+  "duration": 34,
+  "fileId": 1
+}
+```
+
+```json
+{
+	"type" : "image",
+  "fileId": 1
+}
+```
+
 ### (server) total-online
 ```json
 {
@@ -62,7 +77,7 @@
 ### (server) user-joined
 ```json
 {
-	"id" : "e ai",
+	"id" : 1,
 	"username" : "text",
 	"lastMessges": [
 		{
