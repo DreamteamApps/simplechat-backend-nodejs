@@ -53,7 +53,7 @@ module.exports.create = async (fileStream, type, name, extension, duration) => {
 
     const uploadPromises = [fileUploadPromise];
 
-    if (type = MessageTypes.IMAGE) {
+    if (type == MessageTypes.IMAGE) {
         const thumbnail = await File.create({
             type,
             name: `${name}-thumbnail`,
