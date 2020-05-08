@@ -12,6 +12,7 @@ class FilesSchema extends Schema {
       table.string('extension', 254)
       table.string('key', 254)
       table.string('url', 254)
+      table.string('thumbnail_url', 254)
       table.integer('duration_seconds')
       table.timestamps()
     })

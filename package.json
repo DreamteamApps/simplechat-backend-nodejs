@@ -29,10 +29,13 @@
     "@adonisjs/websocket": "^1.0.12",
     "aws-sdk": "^2.669.0",
     "axios": "^0.19.2",
+    "jimp": "^0.10.3",
     "moment": "^2.25.1",
     "mysql": "^2.18.1",
     "socket.io": "^2.3.0",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^4.2.0",
+    "stream-to-array": "^2.3.0",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {},
   "autoload": {
