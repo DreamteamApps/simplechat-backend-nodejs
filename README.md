@@ -48,7 +48,7 @@ file
 	"thumbnailUrl": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0"
 }
 ```
-
+or
 ```json
 {
 	"id": 1,
@@ -81,7 +81,7 @@ file
 	"type" : "text"
 }
 ```
-
+or
 ```json
 {
 	"type" : "audio",
@@ -89,7 +89,7 @@ file
   "fileId": 1
 }
 ```
-
+or
 ```json
 {
 	"type" : "image",
@@ -120,12 +120,37 @@ file
 			}
 		},
 		{
-			"type": "text",
-			"message": "noiz",
+			"type": "audio",
+			"message": "",
 			"date":"2020-05-04 12:40",
 			"user": {
 				"id": 2,
 				"username": "Daniel"
+			},
+			"file": {
+				"id": 1,
+				"name": "voice",
+				"extension": "mp4",
+				"duration": 39,
+				"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-9664-90ca7chg6cb0",
+				"thumbnailUrl": null
+			}
+		},
+		{
+			"type": "image",
+			"message": "",
+			"date":"2020-05-04 12:40",
+			"user": {
+				"id": 2,
+				"username": "Daniel"
+			},
+			"file": {
+				"id": 1,
+				"name": "image",
+				"extension": "jpg",
+				"duration": null,
+				"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0",
+				"thumbnailUrl": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0"
 			}
 		}
 	]
@@ -159,6 +184,46 @@ file
 		"username": "Daniel"
 	}
 }
+````
+or
+```json
+{
+			"type": "audio",
+			"message": "",
+			"date":"2020-05-04 12:40",
+			"user": {
+				"id": 2,
+				"username": "Daniel"
+			},
+			"file": {
+				"id": 1,
+				"name": "voice",
+				"extension": "mp4",
+				"duration": 39,
+				"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-9664-90ca7chg6cb0",
+				"thumbnailUrl": null
+			}
+		}
+````
+or
+```json
+		{
+			"type": "image",
+			"message": "",
+			"date":"2020-05-04 12:40",
+			"user": {
+				"id": 2,
+				"username": "Daniel"
+			},
+			"file": {
+				"id": 1,
+				"name": "image",
+				"extension": "jpg",
+				"duration": null,
+				"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0",
+				"thumbnailUrl": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0"
+			}
+		}
 ```
 
 # Test client 
