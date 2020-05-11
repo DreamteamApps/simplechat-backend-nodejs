@@ -28,7 +28,7 @@ const Jimp = use('jimp')
  *
  * @param {string} username
 */
-module.exports.create = async (fileStream, type, name, extension, duration) => {
+module.exports.create = async (fileStream, type, name, extension, duration_seconds) => {
 
     const externalUrl = process.env.EXTERNAL_URL;
     if (!externalUrl) {
@@ -42,7 +42,7 @@ module.exports.create = async (fileStream, type, name, extension, duration) => {
         name,
         extension,
         key: UUID.v4(),
-        duration_seconds: duration ? Number.parseInt(duration) : null
+        duration_seconds: duration_seconds ? Number.parseInt(duration_seconds) : null
     });
 
     const fileUploadPromise = AmazonS3.uploadFile(fileBuffer, file.key).then(() => {

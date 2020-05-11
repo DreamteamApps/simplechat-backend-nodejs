@@ -30,6 +30,36 @@
 }
 ```
 
+### Upload file
+#### Request - POST - /file/upload?type={image/audio}&duration_seconds={integer(optional)}
+````
+Form-data
+file
+````
+
+#### Response
+```json
+{
+	"id": 1,
+	"name": "image",
+	"extension": "jpg",
+	"duration": null,
+	"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0",
+	"thumbnailUrl": "http://backendurl.com/file/content/48b874b5-bf02-4af8-2252-90ca7chg6cb0"
+}
+```
+
+```json
+{
+	"id": 1,
+	"name": "voice",
+	"extension": "mp4",
+	"duration": 39,
+	"url": "http://backendurl.com/file/content/48b874b5-bf02-4af8-9664-90ca7chg6cb0",
+	"thumbnailUrl": null
+}
+```
+
 # Socket events
 ### (client) client-connect
 
